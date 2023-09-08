@@ -8,7 +8,9 @@ export const metadata: Metadata = {
   title: 'Welcome to Rich Picks',
 }
 
-const Home = async ({ preview=false }) => {
+const Home = async ({ preview=false }: {
+  preview: boolean
+}) => {
   const posts = (await getItGirl(preview)) ?? []
   // const posts: any[] = []
   const heroPost = posts[0]
