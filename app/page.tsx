@@ -2,17 +2,13 @@ import { Metadata } from 'next'
 import { PostType } from '@/app/lib/types'
 import { Post } from '@/app/components/Post'
 import { getItGirl } from '@/app/lib/api'
-import styles from './page.module.scss'
 
 export const metadata: Metadata = {
   title: 'Welcome to Rich Picks',
 }
 
-const Home = async ({ preview=false }: {
-  preview: boolean
-}) => {
-  const posts = (await getItGirl(preview)) ?? []
-  // const posts: any[] = []
+const Home = async () => {
+  const posts = (await getItGirl(false)) ?? []
   const heroPost = posts[0]
   const morePosts = posts.slice(1)
   return posts.length === 0 ? (
