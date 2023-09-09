@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 }
 
 const Home = async () => {
+  // fetch data
   const posts = (await getItGirl(false)) ?? []
-  const heroPost = posts[0]
-  const morePosts = posts.slice(1)
+  // JSX
   return posts.length === 0 ? (
     <section className="section">
       <div className="container">
@@ -21,22 +21,13 @@ const Home = async () => {
         </header>
       </div>
     </section>
-  ) : (
-    <>
-      <Post data={heroPost} heading="This week Rich picks" />
-      {morePosts.length > 0 && (
-        <>
-          {morePosts.map((post: PostType, index: number) => (
-            <Post
-              key={post.sys.id}
-              data={post}
-              heading={index === 0 ? 'Last week Rich picked' : post.title}
-            />
-          ))}
-        </>
-      )}
-    </>
-  )
+  ) : posts.map((post: PostType, index: number) => (
+      <Post
+        key={post.sys.id}
+        data={post}
+        heading={index === 0 ? 'This week Rich picks' : post.title}
+      />
+    ))
 }
 
 export default Home
