@@ -1,0 +1,31 @@
+.graph {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.62;
+}
+
+.graph:last-child {
+  margin-bottom: 0;
+}
+
+// BODY RULES
+
+.body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+// MAIN RULES
+
+.main {
+  flex: 1;
+}
+
+// FOOTER RULES
+
+.footer {
+  background-color: whitesmoke;
+  padding: 4rem 2rem;
+}

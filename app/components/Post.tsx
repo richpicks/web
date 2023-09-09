@@ -37,28 +37,6 @@ const Post = ({ data, heading }: {
       </div>
     </section>
   )
-  // return (
-  //   <section>
-  //     <header>
-  //       <h1>{heading} -- {allDone ? 'dunzo' : 'not yet...'}</h1>
-  //       <p>{data.date}</p>
-  //     </header>
-  //     <div>
-  //       {items.map((item: PickType) => (
-  //         <Pick key={item.sys.id} data={item} />
-  //       ))}
-  //     </div>
-  //     {allDone && (
-  //       <footer>
-  //         <ul>
-  //           <li>wins: {scoreboard.wins}</li>
-  //           <li>losses: {scoreboard.losses}</li>
-  //           <li>ties: {scoreboard.ties}</li>
-  //         </ul>
-  //       </footer>
-  //     )}
-  //   </section>
-  // )
 }
 
 export { Post }
