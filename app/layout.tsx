@@ -1,6 +1,9 @@
 import 'normalize.css'
 import '@/styles/app.scss'
 import { Metadata } from 'next'
+import { GoogleAnalytics } from '@/components/GoogleAnalytics'
+import { CookieBanner } from '@/components/CookieBanner'
+import styles from './layout.module.scss'
 
 export const metadata: Metadata = {
   title: {
@@ -12,15 +15,21 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body className="body">
-        <header></header>
-        <main className="main">
+      <GoogleAnalytics GA_MEASUREMENT_ID='G-7Q2YJNTGBS' />
+      <body className={styles.body}>
+        <header>
+          <CookieBanner />
+        </header>
+        <main className={styles.main}>
           {children}
         </main>
-        <footer className="footer">
+        <footer className={styles.footer}>
           <div className="container">
-            <p className="graph">
-              Please <a href="https://responsibleplay.org">play responsibily</a>. If you or someone you know has a gambling problem, call <a href="tel:+1(800)426-2537">1-800-GAMBLER</a>, or visit the <a href="https://www.ncpgambling.org">National Council on Problem Gambling</a> website.
+            <p className={styles.graph}>
+              Please <a href="https://responsibleplay.org">play responsibily</a>.
+            </p>
+            <p className={styles.graph}>
+              If you or someone you know has a gambling problem, call <a href="tel:+1(800)426-2537">1-800-GAMBLER</a>, or visit the <a href="https://www.ncpgambling.org">National Council on Problem Gambling</a> website.
             </p>
           </div>
         </footer>

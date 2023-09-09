@@ -96,27 +96,6 @@ body {
   margin-bottom: 0;
 }
 
-// BODY RULES
-
-.body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-// MAIN RULES
-
-.main {
-  flex: 1;
-}
-
-// FOOTER RULES
-
-.footer {
-  background-color: whitesmoke;
-  padding: 4rem 2rem;
-}
-
 // UTILITY RULES
 
 .visually-hidden {
