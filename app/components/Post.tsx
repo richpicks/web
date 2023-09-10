@@ -15,7 +15,7 @@ const Post = ({ data, heading }: {
       <div className="container">
         <header className="header">
           <time className="eyebrow" dateTime={data.date}>
-            {format(new Date(data.date), `EEEE 'the' do 'of' LLLL yyyy`)}
+            {format(new Date(data.date), `do 'of' LLLL yyyy`)}
           </time>
           <h1 className="heading">
             {heading}
