@@ -11,6 +11,7 @@ async function fetchGraphQL(query: string, preview = false) {
             : process.env.CONTENTFUL_ACCESS_TOKEN
         }`,
       },
+      next: { revalidate: 3600 },
       body: JSON.stringify({ query }),
     }
   ).then((response) => response.json())
