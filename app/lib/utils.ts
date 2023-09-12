@@ -1,5 +1,13 @@
 import { PickType, ScoreType } from '@/app/lib/types'
 
+export const getPostResults = (wins:number, total: number) => {
+  const result = wins / total * 100
+  if(result === 100) { return `and was a perfect ${wins} out of ${total}` }
+  if(result > 50) { return `and went for a respectable ${wins} out of ${total}` }
+  if(result === 50) { return `and went for a decent ${wins} out of ${total}` }
+  else { return `and went for a less than stellar ${wins} out of ${total}` }
+}
+
 export const gameDone = (pick: PickType) => {
   return pick.game.done
 }
@@ -44,7 +52,7 @@ export const getSpreadData = (pick: PickType) => {
   const isAway = team?.name === awayTeam.name
   return isAway ? {
     isAway: isAway,
-    isFavorite: awaySpread < 0,
+    isFavorite: awaySpread <= 0,
     opposingScore: homeScore,
     opposingTeam: homeTeam,
     pickedScore: awayScore,
@@ -53,7 +61,7 @@ export const getSpreadData = (pick: PickType) => {
     spread: awaySpread,
   } : {
     isAway: isAway,
-    isFavorite: homeSpread < 0,
+    isFavorite: homeSpread <= 0,
     opposingScore: awayScore,
     opposingTeam: awayTeam,
     pickedScore: homeScore,

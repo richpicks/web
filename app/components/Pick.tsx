@@ -43,6 +43,7 @@ const PickSpread = ({ data }: {
     result,
     spread
   } = spreadData
+  const absoluteSpread = Math.abs(spread)
   return (
     <>
       <p className="pick">
@@ -55,7 +56,8 @@ const PickSpread = ({ data }: {
         <p className="result">
           <span aria-hidden="true">{emoji}</span>{' '}
           Rich needed the <strong>{team?.name}</strong> to{' '}
-          {isFavorite ? 'win' : 'not lose'} by more than {Math.abs(spread)} points.{' '}
+          {isFavorite ? 'win' : 'not lose'} by more than {absoluteSpread}{' '}
+          point{absoluteSpread === 1 ? '' : 's'}.{' '}
           They {result} {pickedScore} to {opposingScore}.
         </p>
       )}

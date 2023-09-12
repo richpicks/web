@@ -21,13 +21,7 @@ const Home = async () => {
         </header>
       </div>
     </section>
-  ) : posts.map((post: PostType, index: number) => (
-      <Post
-        key={post.sys.id}
-        data={post}
-        heading={index === 0 ? 'This week Rich picks' : post.title}
-      />
-    ))
+  ) : posts.map((post: PostType) => <Post key={post.sys.id} data={post} />)
 }
 
 export default Home
