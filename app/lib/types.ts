@@ -21,12 +21,12 @@ export interface PickType {
 
 export interface PostType {
   title: string
-  date: string
   picksCollection: {
     items: PickType[]
   }
   sys: {
     id: string
+    firstPublishedAt: string
   }
 }
 

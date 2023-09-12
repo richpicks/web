@@ -28,6 +28,7 @@ export async function getItGirl(preview: boolean | undefined) {
         items {
           sys {
             id
+            firstPublishedAt
           }
           title
           date
