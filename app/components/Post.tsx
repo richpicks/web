@@ -2,37 +2,39 @@ import { format } from 'date-fns'
 import { PickType, PostType } from '@/app/lib/types'
 import { getAllDone, getScoreboard, getPostResults } from '@/app/lib/utils'
 import { Pick } from '@/app/components/Pick'
+import styles from './Post.module.scss'
 
 const Post = ({ data }: {
   data: PostType
 }) => {
-  const { picksCollection: { items } } = data
+  const { picksCollection: { items }, sys: { firstPublishedAt }, title } = data
   const allDone = getAllDone(items)
   const scoreboard = getScoreboard(items)
-  const { sys: { firstPublishedAt }, title } = data
+  const { wins } = scoreboard
+  const totalPicks = items.length
   return (
-    <section className="section">
+    <section className={styles.section}>
       <div className="container">
-        <header className="header">
-          <time className="eyebrow" dateTime={firstPublishedAt}>
+        <header className={styles.header}>
+          <time className={styles.eyebrow} dateTime={firstPublishedAt}>
             {format(new Date(firstPublishedAt), `do 'of' LLLL yyyy`)}
           </time>
-          <h1 className="heading">
-            {title}
+          <h1 className={styles.heading}>
+            {allDone ? `${title} ${getPostResults(wins, totalPicks)}` : 'This week Rich picks'}
           </h1>
           {allDone && (
-            <p className="summary">
-              {getPostResults(scoreboard.wins, items.length)}
+            <p className={styles.summary}>
+              {wins} out of {totalPicks}
             </p>
           )}
         </header>
-        <ol className="games">
+        <ol className={styles.list}>
           {items.map((item: PickType) => (
-            <li className="game" key={item.sys.id}><Pick data={item} /></li>
+            <li className={styles.item} key={item.sys.id}><Pick data={item} /></li>
           ))}
         </ol>
         {!allDone && (
-          <p className="graph">
+          <p className={styles.graph}>
             Check out the latest odds at <a href="https://sportsbook.draftkings.com/leagues/football/nfl">DraftKings</a>, <a href="https://www.espn.com/nfl/lines">ESPN</a>, or <a href="https://sportsbook.fanduel.com/navigation/nfl">FanDuel</a>.
           </p>
         )}

@@ -1,14 +1,3 @@
-.graph {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  line-height: 1.62;
-}
-
-.graph:last-child {
-  margin-bottom: 0;
-}
-
 // BODY RULES
 
 .body {
@@ -28,4 +17,16 @@
 .footer {
   background-color: whitesmoke;
   padding: 4rem 2rem;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+.graph {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 0.75rem; // 12 pixels
+  line-height: 1.62;
+}
+
+.graph:last-child {
+  margin-bottom: 0;
 }

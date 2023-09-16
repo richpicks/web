@@ -1,15 +1,4 @@
-// FONT FAMILY
-
-body {
-  font-family: "Lucida Console", Courier, monospace;
-}
-
 // STRUCTURAL RULES
-
-.section {
-  padding: 4rem 1.5rem;
-  // padding: 6rem 4rem; // wide screen
-}
 
 .container {
   margin-top: 3rem;
@@ -20,80 +9,6 @@ body {
 
 .container:first-child {
   margin-top: 0;
-}
-
-// HEADER RULES
-
-.header {
-  margin-bottom: 2rem;
-}
-
-.eyebrow {
-  font-size: 0.9rem;
-}
-
-.heading {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 2.34rem;
-}
-
-.summary {
-  margin-top: 0.25rem;
-  margin-bottom: 0;
-  font-size: 1.8rem;
-}
-
-// TYPOGRAPHY RULES
-
-.subheading {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-.graph {
-  margin-top: 0;
-  margin-bottom: 2rem;
-}
-
-.graph:last-child {
-  margin-bottom: 0;
-}
-
-// GAME RULES
-
-.games {
-  margin-top: 0;
-  margin-bottom: 2rem;
-  padding-left: 0;
-  list-style-type: none;
-}
-
-.games:last-child {
-  margin-bottom: 0;
-}
-
-.game {
-  margin-top: 2rem;
-}
-
-.game:first-child {
-  margin-top: 0;
-}
-
-// PICK RULES
-
-.pick {
-  margin-top: 0;
-  margin-bottom: 0;
-  // font-size: 1.17rem;
-  font-size: 1.26rem;
-}
-
-.result {
-  margin-top: 0.5rem;
-  margin-top: 1rem;
-  margin-bottom: 0;
 }
 
 // UTILITY RULES

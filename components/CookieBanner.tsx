@@ -39,7 +39,7 @@ const CookieBanner = () => {
     <div className={styles.banner} aria-labelledby="cookie-consent-message">
       <div className={[styles.grid, 'container'].join(' ')}>
         <p className={styles.graph} id="cookie-consent-message">
-          We use <strong>cookies</strong>.
+          We use <strong>cookies</strong> on this site.
         </p>
         <ul className={styles.list}>
           <li>

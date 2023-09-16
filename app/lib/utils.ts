@@ -1,11 +1,11 @@
 import { PickType, ScoreType } from '@/app/lib/types'
 
-export const getPostResults = (wins:number, total: number) => {
+export const getPostResults = (wins: number, total: number) => {
   const result = wins / total * 100
-  if(result === 100) { return `and was a perfect ${wins} out of ${total}` }
-  if(result > 50) { return `and went for a respectable ${wins} out of ${total}` }
-  if(result === 50) { return `and went for a decent ${wins} out of ${total}` }
-  else { return `and went for a less than stellar ${wins} out of ${total}` }
+  if(result === 100) { return `and was perfect` }
+  if(result > 50) { return `and had a good outing` }
+  if(result === 50) { return `and broke even` }
+  else { return `and was less than stellar` }
 }
 
 export const gameDone = (pick: PickType) => {
