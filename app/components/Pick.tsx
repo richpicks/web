@@ -1,5 +1,6 @@
 import { PickType } from '@/app/lib/types'
 import { getEmoji, getSpreadData, settleScore } from '@/app/lib/utils'
+import styles from './Pick.module.scss'
 
 const PickOverUnder = ({ data }: {
   data: PickType
@@ -9,13 +10,13 @@ const PickOverUnder = ({ data }: {
   const emoji = getEmoji(settled)
   return (
     <>
-      <p className="pick">
+      <p className={styles.pick}>
         The <strong>{bet}</strong> for the{' '}
         <em>{game.awayTeam.location} {game.awayTeam.name}</em>{' '}
         against the <em>{game.homeTeam.location} {game.homeTeam.name}</em>.
       </p>
       {game.done && (
-        <p className="result">
+        <p className={styles.result}>
           <span aria-hidden="true">{emoji}</span>{' '}
           Rich needed the <em>{game.awayTeam.name}</em> and
           the <em>{game.homeTeam.name}</em> to score
@@ -46,14 +47,14 @@ const PickSpread = ({ data }: {
   const absoluteSpread = Math.abs(spread)
   return (
     <>
-      <p className="pick">
+      <p className={styles.pick}>
         The <strong>{team?.location} {team?.name}</strong>{' '}
         {game.done ? `(${spread}) ` : ''}
         {isAway ? 'on the road' : 'at home' }  against the{' '}
         <em>{opposingTeam.location} {opposingTeam.name}</em>.
       </p>
       {game.done && (
-        <p className="result">
+        <p className={styles.result}>
           <span aria-hidden="true">{emoji}</span>{' '}
           Rich needed the <strong>{team?.name}</strong> to{' '}
           {isFavorite ? 'win' : 'not lose'} by more than {absoluteSpread}{' '}
