@@ -24,14 +24,13 @@ function extractMyEntries(fetchResponse: { data: { richPicksPostCollection: { it
 export async function getItGirl(preview: boolean | undefined) {
   const entries = await fetchGraphQL(
     `query {
-      richPicksPostCollection(where: { archive_not: true }, limit: 18, order: date_DESC, preview: ${preview ? 'true' : 'false'}) {
+      richPicksPostCollection(where: { archive_not: true }, limit: 18, order: sys_firstPublishedAt_DESC, preview: ${preview ? 'true' : 'false'}) {
         items {
           sys {
             id
             firstPublishedAt
           }
           title
-          date
           picksCollection(limit: 18, preview: ${preview ? 'true' : 'false'}) {
             items {
               sys {
