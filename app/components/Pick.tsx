@@ -1,5 +1,5 @@
 import { PickType } from '@/app/lib/types'
-import { getEmoji, getSpreadData, settleScore } from '@/app/lib/utils'
+import { getConjuction, getEmoji, getSpreadData, settleScore } from '@/app/lib/utils'
 import styles from './Pick.module.scss'
 
 const PickOverUnder = ({ data }: {
@@ -11,7 +11,8 @@ const PickOverUnder = ({ data }: {
   return (
     <>
       <p className={styles.pick}>
-        The <strong>{bet}</strong> for the{' '}
+        {game.done ? 'Rich picked the ' : 'The '}
+        <strong>{bet}</strong> ({game.points}) for the{' '}
         <em>{game.awayTeam.location} {game.awayTeam.name}</em>{' '}
         against the <em>{game.homeTeam.location} {game.homeTeam.name}</em>.
       </p>
@@ -33,6 +34,7 @@ const PickSpread = ({ data }: {
 }) => {
   const { team, game } = data
   const settled = settleScore(data)
+  const conjunction = getConjuction(settled)
   const emoji = getEmoji(settled)
   const spreadData = getSpreadData(data)
   const {
@@ -48,9 +50,9 @@ const PickSpread = ({ data }: {
   return (
     <>
       <p className={styles.pick}>
-        The <strong>{team?.location} {team?.name}</strong>{' '}
-        {game.done ? `(${spread}) ` : ''}
-        {isAway ? 'on the road' : 'at home' }  against the{' '}
+        {game.done ? 'Rich picked the ' : 'The '}
+        <strong>{team?.location} {team?.name}</strong> ({spread}){' '}
+        {isAway ? 'on the road' : 'at home' } against the{' '}
         <em>{opposingTeam.location} {opposingTeam.name}</em>.
       </p>
       {game.done && (
@@ -58,8 +60,8 @@ const PickSpread = ({ data }: {
           <span aria-hidden="true">{emoji}</span>{' '}
           Rich needed the <strong>{team?.name}</strong> to{' '}
           {isFavorite ? 'win' : 'not lose'} by more than {absoluteSpread}{' '}
-          point{absoluteSpread === 1 ? '' : 's'}.{' '}
-          They {result} {pickedScore} to {opposingScore}.
+          point{absoluteSpread === 1 ? '' : 's'}, {conjunction} they {result}{' '}
+          {pickedScore} to {opposingScore}.
         </p>
       )}
     </>

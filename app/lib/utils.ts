@@ -83,6 +83,11 @@ export const getEmoji = (diff: number) => {
   return '🤔'
 }
 
+export const getConjuction = (diff: number) => {
+  if (diff > 0) return 'and'
+  return 'but'
+}
+
 export const tallyScores = (score: ScoreType, settled: number) => {
   let { wins, losses, ties } = score
   if(settled > 0) score.wins = ++wins
