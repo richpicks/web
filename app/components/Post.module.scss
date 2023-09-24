@@ -1,22 +1,9 @@
 // STRUCTURAL RULES
 
 .section {
-  padding: 4rem 1.5rem;
+  padding: 5rem 1.5rem;
   // font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
   font-family: "Lucida Console", Courier, monospace;
-}
-
-.header {
-  margin-bottom: 2rem;
-}
-
-.graph {
-  margin-top: 0;
-  margin-bottom: 2rem;
-}
-
-.graph:last-child {
-  margin-bottom: 0;
 }
 
 .list {
@@ -36,6 +23,15 @@
 
 .item:first-child {
   margin-top: 0;
+}
+
+.graph {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.graph:last-child {
+  margin-bottom: 0;
 }
 
 // TYPOGRAPHY RULES
