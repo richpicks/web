@@ -37,7 +37,7 @@ const Post = ({ data }: {
       <footer className="container">
         {allDone ? (
           <p className={styles.graph}>
-            Odds courtesy of <a href="https://www.espn.com/nfl/lines">ESPN</a>.
+            Final scores and odds courtesy of <a href="https://www.espn.com/nfl/scoreboard">ESPN</a>.
           </p>
         ) : (
           <p className={styles.graph}>

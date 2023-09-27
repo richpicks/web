@@ -20,7 +20,7 @@ const PickOverUnder = ({ data }: {
         <p className={styles.result}>
           <span aria-hidden="true">{emoji}</span>{' '}
           Rich needed the <em>{game.awayTeam.name}</em> and
-          the <em>{game.homeTeam.name}</em> to score
+          the <em>{game.homeTeam.name}</em> to score{' '}
           {bet === 'over' ? 'more' : 'less'} than {game.points} points combined.
           The final score was {game.awayScore} to {game.homeScore}.
         </p>
