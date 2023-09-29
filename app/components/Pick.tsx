@@ -47,11 +47,12 @@ const PickSpread = ({ data }: {
     spread
   } = spreadData
   const absoluteSpread = Math.abs(spread)
+  const positiveSpread = spread > 0 ? `+${spread}` : spread
   return (
     <>
       <p className={styles.pick}>
         {game.done ? 'Rich picked the ' : 'The '}
-        <strong>{team?.location} {team?.name}</strong> ({spread}){' '}
+        <strong>{team?.location} {team?.name}</strong> ({positiveSpread}){' '}
         {isAway ? 'on the road' : 'at home' } against the{' '}
         <em>{opposingTeam.location} {opposingTeam.name}</em>.
       </p>
