@@ -1,10 +1,13 @@
 import { PickType } from '@/app/lib/types'
-import { getConjuction, getEmoji, getSpreadData, settleScore } from '@/app/lib/utils'
+import {
+  getConjuction,
+  getEmoji,
+  getSpreadData,
+  settleScore,
+} from '@/app/lib/utils'
 import styles from './Pick.module.scss'
 
-const PickOverUnder = ({ data }: {
-  data: PickType
-}) => {
+const PickOverUnder = ({ data }: { data: PickType }) => {
   const { bet, game } = data
   const settled = settleScore(data)
   const emoji = getEmoji(settled)
@@ -13,14 +16,20 @@ const PickOverUnder = ({ data }: {
       <p className={styles.pick}>
         {game.done ? 'Rich picked the ' : 'The '}
         <strong>{bet}</strong> ({game.points}) for the{' '}
-        <em>{game.awayTeam.location} {game.awayTeam.name}</em>{' '}
-        against the <em>{game.homeTeam.location} {game.homeTeam.name}</em>.
+        <em>
+          {game.awayTeam.location} {game.awayTeam.name}
+        </em>{' '}
+        against the{' '}
+        <em>
+          {game.homeTeam.location} {game.homeTeam.name}
+        </em>
+        .
       </p>
       {game.done && (
         <p className={styles.result}>
-          <span aria-hidden="true">{emoji}</span>{' '}
-          Rich needed the <em>{game.awayTeam.name}</em> and
-          the <em>{game.homeTeam.name}</em> to score{' '}
+          <span aria-hidden="true">{emoji}</span> Rich needed the{' '}
+          <strong>{game.awayTeam.name}</strong> and the{' '}
+          <strong>{game.homeTeam.name}</strong> to score{' '}
           {bet === 'over' ? 'more' : 'less'} than {game.points} points combined.
           The final score was {game.awayScore} to {game.homeScore}.
         </p>
@@ -29,9 +38,7 @@ const PickOverUnder = ({ data }: {
   )
 }
 
-const PickSpread = ({ data }: {
-  data: PickType
-}) => {
+const PickSpread = ({ data }: { data: PickType }) => {
   const { team, game } = data
   const settled = settleScore(data)
   const conjunction = getConjuction(settled)
@@ -44,7 +51,7 @@ const PickSpread = ({ data }: {
     opposingTeam,
     pickedScore,
     result,
-    spread
+    spread,
   } = spreadData
   const absoluteSpread = Math.abs(spread)
   const positiveSpread = spread > 0 ? `+${spread}` : spread
@@ -52,26 +59,28 @@ const PickSpread = ({ data }: {
     <>
       <p className={styles.pick}>
         {game.done ? 'Rich picked the ' : 'The '}
-        <strong>{team?.location} {team?.name}</strong> ({positiveSpread}){' '}
-        {isAway ? 'on the road' : 'at home' } against the{' '}
-        <em>{opposingTeam.location} {opposingTeam.name}</em>.
+        <strong>
+          {team?.location} {team?.name}
+        </strong>{' '}
+        ({positiveSpread}) {isAway ? 'on the road' : 'at home'} against the{' '}
+        <em>
+          {opposingTeam.location} {opposingTeam.name}
+        </em>
+        .
       </p>
       {game.done && (
         <p className={styles.result}>
-          <span aria-hidden="true">{emoji}</span>{' '}
-          Rich needed the <strong>{team?.name}</strong> to{' '}
-          {isFavorite ? 'win' : 'not lose'} by more than {absoluteSpread}{' '}
-          point{absoluteSpread === 1 ? '' : 's'}, {conjunction} they {result}{' '}
-          {pickedScore} to {opposingScore}.
+          <span aria-hidden="true">{emoji}</span> Rich needed the{' '}
+          <strong>{team?.name}</strong> to {isFavorite ? 'win' : 'not lose'} by
+          more than {absoluteSpread} point{absoluteSpread === 1 ? '' : 's'},{' '}
+          {conjunction} they {result} {pickedScore} to {opposingScore}.
         </p>
       )}
     </>
   )
 }
 
-const Pick = ({ data }: {
-  data: PickType
-}) => {
+const Pick = ({ data }: { data: PickType }) => {
   const { bet, team, game } = data
   return {
     spread: <PickSpread data={data} />,
