@@ -15,7 +15,7 @@ const PickOverUnder = ({ data }: { data: PickType }) => {
     <>
       <p className={styles.pick}>
         {game.done ? 'Rich picked the ' : 'The '}
-        <strong>{bet}</strong> ({game.points}) for the{' '}
+        <strong>{bet}</strong> {game.points !== 0 && `(${game.points})`} for the{' '}
         <em>
           {game.awayTeam.location} {game.awayTeam.name}
         </em>{' '}
