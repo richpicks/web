@@ -1,4 +1,4 @@
-async function fetchGraphQL(query: string, preview = false) {
+const fetchGraphQL = async (query: string, preview = false) => {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     {
@@ -17,14 +17,20 @@ async function fetchGraphQL(query: string, preview = false) {
   ).then((response) => response.json())
 }
 
-function extractMyEntries(fetchResponse: { data: { richPicksPostCollection: { items: any } } }) {
-  return fetchResponse?.data?.richPicksPostCollection?.items
-}
+const extractPicks = (fetchResponse: {
+  data: { richPicksPickCollection: { items: any } }
+}) => fetchResponse?.data?.richPicksPickCollection?.items
 
-export async function getItGirl(preview: boolean | undefined) {
+const extractPosts = (fetchResponse: {
+  data: { richPicksPostCollection: { items: any } }
+}) => fetchResponse?.data?.richPicksPostCollection?.items
+
+export const getPosts = async (preview: boolean | undefined) => {
   const entries = await fetchGraphQL(
     `query {
-      richPicksPostCollection(where: { archive_not: true }, limit: 18, order: sys_firstPublishedAt_DESC, preview: ${preview ? 'true' : 'false'}) {
+      richPicksPostCollection(where: { archive_not: true }, limit: 18, order: sys_firstPublishedAt_DESC, preview: ${
+        preview ? 'true' : 'false'
+      }) {
         items {
           sys {
             id
@@ -66,5 +72,44 @@ export async function getItGirl(preview: boolean | undefined) {
     }`,
     preview
   )
-  return extractMyEntries(entries)
+  return extractPosts(entries)
+}
+
+export const getPicks = async (preview: boolean | undefined) => {
+  const fetchedData = await fetchGraphQL(
+    `query {
+      richPicksPickCollection(limit: 108, order: sys_firstPublishedAt_DESC, preview: false) {
+        items {
+          sys {
+            id
+          }
+          title
+          bet
+          team {
+            name
+            location
+          }
+          game {
+            title
+            awayTeam {
+              name
+              location
+            }
+            awayScore
+            awaySpread
+            homeTeam {
+              name
+              location
+            }
+            homeScore
+            homeSpread
+            points
+            done
+          }
+        }
+      }
+    }`,
+    preview
+  )
+  return extractPicks(fetchedData)
 }
