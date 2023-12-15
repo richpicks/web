@@ -22,11 +22,13 @@ const Scoreboard = async () => {
             <strong>{winningPercentage}%</strong> accuracy
           </li>
         </ul>
-        <ul className={styles.list}>
-          <li>{wins} hits 💰</li>
-          <li>{ties} pushes 🤔</li>
-          <li>{losses} misses 😢</li>
-        </ul>
+        <div className={styles.stats}>
+          <ul className={styles.list}>
+            <li>{wins} hits 💰</li>
+            <li>{ties} pushes 🤔</li>
+            <li>{losses} misses 😢</li>
+          </ul>
+        </div>
       </div>
     </div>
   ) : null
