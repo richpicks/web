@@ -7,7 +7,7 @@
 
 .list {
   list-style-type: none;
-  margin-top: 0.25rem;
+  margin-top: 0;
   margin-bottom: 0;
   padding-left: 0;
   display: grid;
@@ -16,6 +16,9 @@
   justify-content: space-between;
 }
 
-.list:first-child {
-  margin-top: 0;
+.stats {
+  border-top: solid 1px #333;
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
+  font-size: 0.75rem; // 12 pixels
 }
