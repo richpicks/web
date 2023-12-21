@@ -78,7 +78,7 @@ export const getPosts = async (preview: boolean | undefined) => {
 export const getPicks = async (preview: boolean | undefined) => {
   const fetchedData = await fetchGraphQL(
     `query {
-      richPicksPickCollection(limit: 108, order: sys_firstPublishedAt_DESC, preview: false) {
+      richPicksPickCollection(where: { game: { done: true } }, limit: 108, order: sys_firstPublishedAt_DESC, preview: false) {
         items {
           sys {
             id
