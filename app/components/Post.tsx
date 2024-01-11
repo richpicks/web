@@ -20,11 +20,11 @@ const Post = ({ data }: { data: PostType }) => {
         <time className={styles.eyebrow} dateTime={firstPublishedAt}>
           {format(new Date(firstPublishedAt), `do 'of' LLLL yyyy`)}
         </time>
-        <h1 className={styles.heading}>
+        <h2 className={styles.heading}>
           {allDone
             ? `Rich picked the ${title} ${getPostResults(wins, totalPicks)}`
             : 'This week Rich picks'}
-        </h1>
+        </h2>
         {allDone && (
           <p className={styles.summary}>
             {wins} out of {totalPicks}

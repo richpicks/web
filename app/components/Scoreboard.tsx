@@ -1,13 +1,14 @@
-import { getPicks } from '../lib/api'
+import { getSeasonPicks } from '../lib/api'
 import { getScoreboard } from '../lib/utils'
 import styles from './Scoreboard.module.scss'
 
-const Scoreboard = async () => {
+const Scoreboard = async ({ seasonID }: { seasonID: string }) => {
   // fetch data
-  const picks = (await getPicks(false)) ?? []
+  const picks = (await getSeasonPicks(seasonID)) ?? []
   // format data
-  const totalPicks = picks.length
-  const data = getScoreboard(picks)
+  const filteredPicks = picks.filter((p: any) => p?.game?.done)
+  const totalPicks = filteredPicks.length
+  const data = getScoreboard(filteredPicks)
   const { wins, losses, ties } = data
   const winningPercentage = +(wins / totalPicks).toFixed(2) * 100
   // JSX
