@@ -1,4 +1,18 @@
+// TYPOGRAPHY RULES
+
+.heading {
+  font-family: Verdana, Geneva, sans-serif;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 2.8125rem; // 45 pixels
+  font-weight: normal;
+}
+
 // STRUCTURAL RULES
+
+.article:first-child {
+  padding-top: 5rem;
+}
 
 .container {
   margin-top: 3rem;
@@ -9,6 +23,10 @@
 
 .container:first-child {
   margin-top: 0;
+}
+
+.header {
+  padding: 0 1.5rem 1rem;
 }
 
 // UTILITY RULES

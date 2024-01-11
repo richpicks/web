@@ -1,7 +1,6 @@
 import 'normalize.css'
 import '@/styles/app.scss'
 import { Metadata } from 'next'
-import { Scoreboard } from '@/app/components/Scoreboard'
 import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import { CookieBanner } from '@/components/CookieBanner'
 import styles from './layout.module.scss'
@@ -20,7 +19,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body className={styles.body}>
         <header>
           <CookieBanner />
-          <Scoreboard />
         </header>
         <main className={styles.main}>{children}</main>
         <footer className={styles.footer}>
