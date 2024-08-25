@@ -80,12 +80,55 @@ const PickSpread = ({ data }: { data: PickType }) => {
   )
 }
 
+const PickMoneyline = ({ data }: { data: PickType }) => {
+  const { team, game } = data
+  const settled = settleScore(data)
+  const conjunction = getConjuction(settled)
+  const emoji = getEmoji(settled)
+  const spreadData = getSpreadData(data)
+  const {
+    isAway,
+    isFavorite,
+    opposingScore,
+    opposingTeam,
+    pickedScore,
+    result,
+    spread,
+  } = spreadData
+  const absoluteSpread = Math.abs(spread)
+  const positiveSpread = spread > 0 ? `+${spread}` : spread
+  return (
+    <>
+      <p className={styles.pick}>
+        {game.done ? 'Rich picked the ' : 'The '}
+        <strong>
+          {team?.location} {team?.name}
+        </strong>{' '}
+        ({positiveSpread}) {isAway ? 'on the road' : 'at home'} against the{' '}
+        <em>
+          {opposingTeam.location} {opposingTeam.name}
+        </em>
+        .
+      </p>
+      {game.done && (
+        <p className={styles.result}>
+          <span aria-hidden="true">{emoji}</span> Rich needed the{' '}
+          <strong>{team?.name}</strong> to {isFavorite ? 'win' : 'not lose'} by
+          more than {absoluteSpread} point{absoluteSpread === 1 ? '' : 's'},{' '}
+          {conjunction} they {result} {pickedScore} to {opposingScore}.
+        </p>
+      )}
+    </>
+  )
+}
+
 const Pick = ({ data }: { data: PickType }) => {
-  const { bet, team, game } = data
+  const { bet } = data
   return {
     spread: <PickSpread data={data} />,
     over: <PickOverUnder data={data} />,
     under: <PickOverUnder data={data} />,
+    moneyline: <PickMoneyline data={data} />,
   }[bet]
 }
 
