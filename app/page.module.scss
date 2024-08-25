@@ -9,6 +9,10 @@
   max-width: 768px;
 }
 
+.body {
+  padding: 1.5rem 1.5rem 5rem;
+}
+
 // TYPOGRAPHIC RULES
 
 .heading {
@@ -17,6 +21,7 @@
 }
 
 .graph {
+  font-family: 'Lucida Console', Courier, monospace;
   font-size: 1.26rem;
   margin-top: 1rem;
   margin-bottom: 0;

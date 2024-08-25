@@ -11,7 +11,7 @@ export interface GameType {
 
 export interface PickType {
   title: string
-  bet: 'spread' | 'over' | 'under'
+  bet: 'spread' | 'over' | 'under' | 'moneyline'
   game: GameType
   team?: TeamType
   sys: {

@@ -43,6 +43,30 @@ const extractSeasonPosts = (fetchResponse: {
     ?.richPicksPostCollection?.items
 }
 
+const extractSeasonPostsToo = (fetchResponse: {
+  data: {
+    richPicksSeasonCollection: {
+      items: [
+        {
+          sys: {
+            id: string
+          }
+          label: string
+          linkedFrom: {
+            richPicksPostCollection: { items: any }
+          }
+        }
+      ]
+    }
+  }
+}) => {
+  const data = fetchResponse?.data?.richPicksSeasonCollection?.items[0] || {}
+  const { sys, label, linkedFrom } = data
+  const { id } = sys || {}
+  const { items = [] } = linkedFrom?.richPicksPostCollection || {}
+  return { id, items, label }
+}
+
 const pickFields = `
   sys {
     id
@@ -109,6 +133,44 @@ export const getPicks = async (preview: boolean | undefined) => {
     preview
   )
   return extractPicks(fetchedData)
+}
+
+export const getSeasonPostsBySlug = async (slug: string) => {
+  const entries = await fetchGraphQL(
+    `query ($slug: String!) {
+      richPicksSeasonCollection(where: {slug: $slug}, limit: 1) {
+        items {
+          sys {
+            id
+          }
+          label
+          linkedFrom {
+            richPicksPostCollection(
+              limit: 18
+              order: sys_firstPublishedAt_DESC
+            ) {
+              total
+              items {
+                sys {
+                  id
+                  firstPublishedAt
+                }
+                title
+                picksCollection(limit: 18) {
+                  items {
+                    ${pickFields}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }`,
+    false, // preview
+    { slug }
+  )
+  return extractSeasonPostsToo(entries)
 }
 
 export const getSeasonPosts = async (id: string) => {
