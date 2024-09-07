@@ -2,6 +2,7 @@ import { PickType } from '@/app/lib/types'
 import {
   getConjuction,
   getEmoji,
+  getMoneylineData,
   getSpreadData,
   settleScore,
 } from '@/app/lib/utils'
@@ -85,7 +86,7 @@ const PickMoneyline = ({ data }: { data: PickType }) => {
   const settled = settleScore(data)
   const conjunction = getConjuction(settled)
   const emoji = getEmoji(settled)
-  const spreadData = getSpreadData(data)
+  const spreadData = getMoneylineData(data)
   const {
     isAway,
     isFavorite,

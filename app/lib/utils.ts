@@ -74,6 +74,35 @@ export const getSpreadData = (pick: PickType) => {
       }
 }
 
+export const getMoneylineData = (pick: PickType) => {
+  const {
+    game: { awayScore, awaySpread, awayTeam, homeScore, homeSpread, homeTeam },
+    team,
+  } = pick
+  const isAway = team?.name === awayTeam.name
+  return isAway
+    ? {
+        isAway: isAway,
+        isFavorite: awaySpread <= 0,
+        opposingScore: homeScore,
+        opposingTeam: homeTeam,
+        pickedScore: awayScore,
+        pickedTeam: awayTeam,
+        result: getResult(awayScore - homeScore),
+        spread: awaySpread,
+      }
+    : {
+        isAway: isAway,
+        isFavorite: homeSpread <= 0,
+        opposingScore: awayScore,
+        opposingTeam: awayTeam,
+        pickedScore: homeScore,
+        pickedTeam: homeTeam,
+        result: getResult(homeScore - awayScore),
+        spread: homeSpread,
+      }
+}
+
 export const getResult = (diff: number) => {
   if (diff > 0) return 'won'
   if (diff < 0) return 'lost'
