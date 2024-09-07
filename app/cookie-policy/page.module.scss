@@ -1,0 +1,25 @@
+// STRUCTURAL RULES
+
+.body {
+  font-family: Verdana, Geneva, sans-serif;
+  padding: 1.5rem 1.5rem 5rem;
+}
+
+// TYPOGRAPHIC RULES
+
+.heading {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.graph {
+  font-size: 1.26rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  &:first-child {
+    margin-top: 0;
+  }
+}

@@ -5,7 +5,7 @@ import styles from './CookieBanner.module.scss'
 
 export const getLocalStorage = (key: string, defaultValue: any) => {
   const stickyValue = localStorage.getItem(key)
-  const isNotNull = (stickyValue !== null && typeof stickyValue !== 'undefined')
+  const isNotNull = stickyValue !== null && typeof stickyValue !== 'undefined'
   return isNotNull ? JSON.parse(stickyValue) : defaultValue
 }
 
@@ -23,14 +23,14 @@ const CookieBanner = () => {
     setMounted(true)
   }, [])
 
-  useEffect (() => {
+  useEffect(() => {
     const storedCookieConsent = getLocalStorage(cookieConsentKey, null)
     setCookieConsent(storedCookieConsent)
   }, [setCookieConsent])
 
   useEffect(() => {
     window.gtag('consent', 'update', {
-      'analytics_storage': cookieConsent ? 'granted' : 'denied'
+      analytics_storage: cookieConsent ? 'granted' : 'denied',
     })
     setLocalStorage(cookieConsentKey, cookieConsent)
   }, [cookieConsent])
