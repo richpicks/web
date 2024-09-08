@@ -85,12 +85,14 @@ const pickFields = `
     }
     awayScore
     awaySpread
+    awayMoneyline
     homeTeam {
       name
       location
     }
     homeScore
     homeSpread
+    homeMoneyline
     points
     done
   }

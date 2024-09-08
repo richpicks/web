@@ -14,6 +14,7 @@ const PickOverUnder = ({ data }: { data: PickType }) => {
   const emoji = getEmoji(settled)
   return (
     <>
+      <p className={styles.bet}>Over/Under</p>
       <p className={styles.pick}>
         {game.done ? 'Rich picked the ' : 'The '}
         <strong>{bet}</strong> {game.points !== 0 && `(${game.points})`} for the{' '}
@@ -58,6 +59,7 @@ const PickSpread = ({ data }: { data: PickType }) => {
   const positiveSpread = spread > 0 ? `+${spread}` : spread
   return (
     <>
+      <p className={styles.bet}>Spread</p>
       <p className={styles.pick}>
         {game.done ? 'Rich picked the ' : 'The '}
         <strong>
@@ -86,26 +88,25 @@ const PickMoneyline = ({ data }: { data: PickType }) => {
   const settled = settleScore(data)
   const conjunction = getConjuction(settled)
   const emoji = getEmoji(settled)
-  const spreadData = getMoneylineData(data)
+  const moneylineData = getMoneylineData(data)
   const {
     isAway,
-    isFavorite,
     opposingScore,
     opposingTeam,
     pickedScore,
     result,
-    spread,
-  } = spreadData
-  const absoluteSpread = Math.abs(spread)
-  const positiveSpread = spread > 0 ? `+${spread}` : spread
+    moneyline,
+  } = moneylineData
+  const positiveMoneyline = moneyline > 100 ? `+${moneyline}` : moneyline
   return (
     <>
+      <p className={styles.bet}>Moneyline</p>
       <p className={styles.pick}>
         {game.done ? 'Rich picked the ' : 'The '}
         <strong>
           {team?.location} {team?.name}
         </strong>{' '}
-        ({positiveSpread}) {isAway ? 'on the road' : 'at home'} against the{' '}
+        ({positiveMoneyline}) {isAway ? 'on the road' : 'at home'} against the{' '}
         <em>
           {opposingTeam.location} {opposingTeam.name}
         </em>
@@ -114,9 +115,8 @@ const PickMoneyline = ({ data }: { data: PickType }) => {
       {game.done && (
         <p className={styles.result}>
           <span aria-hidden="true">{emoji}</span> Rich needed the{' '}
-          <strong>{team?.name}</strong> to {isFavorite ? 'win' : 'not lose'} by
-          more than {absoluteSpread} point{absoluteSpread === 1 ? '' : 's'},{' '}
-          {conjunction} they {result} {pickedScore} to {opposingScore}.
+          <strong>{team?.name}</strong> to win, {conjunction} they {result}{' '}
+          {pickedScore} to {opposingScore}.
         </p>
       )}
     </>

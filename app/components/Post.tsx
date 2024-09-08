@@ -49,7 +49,7 @@ const Post = ({ data }: { data: PostType }) => {
         ) : (
           <p className={styles.graph}>
             Odds reflect the opening lines. Please see{' '}
-            <a href="https://www.espn.com/nfl/lines">ESPN</a> for the latest
+            <a href="https://www.espn.com/nfl/odds">ESPN</a> for the latest
             odds.
           </p>
         )}
