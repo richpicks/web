@@ -20,7 +20,7 @@ const Scoreboard = async ({ seasonID }: { seasonID: string }) => {
             {wins} out of {totalPicks}
           </li>
           <li>
-            <strong>{winningPercentage}%</strong> accuracy
+            <strong>{winningPercentage.toPrecision(2)}%</strong> accuracy
           </li>
         </ul>
         <div className={styles.stats}>
