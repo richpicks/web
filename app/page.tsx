@@ -31,15 +31,15 @@ const Home = async () => {
     <article className="article">
       <header className="header">
         <div className="container">
-          <h1 className="heading">NFL 2024 Regular Season</h1>
+          <h1 className="heading">NFL 2024 Post Season</h1>
         </div>
       </header>
       <div className={styles.body}>
         <div className="container">
           <p className={styles.graph}>
             Welcome to Rich Picks. Check out the{' '}
-            <Link href="/nfl/2023-post-season">NFL 2023 Post Season</Link> and
-            the{' '}
+            <Link href="/nfl/2024-regular-season">NFL 2024 Regular Season</Link>
+            , <Link href="/nfl/2023-post-season">NFL 2023 Post Season</Link> and{' '}
             <Link href="/nfl/2023-regular-season">NFL 2023 Regular Season</Link>{' '}
             for previous picks.
           </p>
