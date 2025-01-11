@@ -12,14 +12,14 @@ export const metadata: Metadata = {
 
 const Home = async () => {
   // page data
-  const regularSeasonID = '3hYqTUewPuxadePp650bj8'
+  const regularSeasonID = '2cOksvEfEZ6p3w4zIDPyft'
   const regularSeasonPosts = (await getSeasonPosts(regularSeasonID)) ?? []
   // JSX
   return regularSeasonPosts.length > 0 ? (
     <article className="article">
       <header className="header">
         <div className="container">
-          <h1 className="heading">NFL 2024 Regular Season</h1>
+          <h1 className="heading">NFL 2024 Post Season</h1>
         </div>
       </header>
       <Scoreboard seasonID={regularSeasonID} />
