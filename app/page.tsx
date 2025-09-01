@@ -12,18 +12,18 @@ export const metadata: Metadata = {
 
 const Home = async () => {
   // page data
-  const regularSeasonID = '2cOksvEfEZ6p3w4zIDPyft'
-  const regularSeasonPosts = (await getSeasonPosts(regularSeasonID)) ?? []
+  const seasonID = '3BZXcTiV6iKpzevoOHK08n'
+  const seasonPosts = (await getSeasonPosts(seasonID)) ?? []
   // JSX
-  return regularSeasonPosts.length > 0 ? (
+  return seasonPosts.length > 0 ? (
     <article className="article">
       <header className="header">
         <div className="container">
-          <h1 className="heading">NFL 2024 Post Season</h1>
+          <h1 className="heading">NFL 2025 Regular Season</h1>
         </div>
       </header>
-      <Scoreboard seasonID={regularSeasonID} />
-      {regularSeasonPosts.map((post: PostType) => (
+      <Scoreboard seasonID={seasonID} />
+      {seasonPosts.map((post: PostType) => (
         <Post key={post.sys.id} data={post} />
       ))}
     </article>
@@ -31,17 +31,14 @@ const Home = async () => {
     <article className="article">
       <header className="header">
         <div className="container">
-          <h1 className="heading">NFL 2024 Post Season</h1>
+          <h1 className="heading">NFL 2025 Regular Season</h1>
         </div>
       </header>
       <div className={styles.body}>
         <div className="container">
           <p className={styles.graph}>
-            Welcome to Rich Picks. Check out the{' '}
-            <Link href="/nfl/2024-regular-season">NFL 2024 Regular Season</Link>
-            , <Link href="/nfl/2023-post-season">NFL 2023 Post Season</Link> and{' '}
-            <Link href="/nfl/2023-regular-season">NFL 2023 Regular Season</Link>{' '}
-            for previous picks.
+            Welcome to Rich Picks. The regular season is upon us, in the
+            meantime, check out Rich’s <Link href="/nfl">NFL picks</Link>.
           </p>
         </div>
       </div>
