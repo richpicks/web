@@ -4,7 +4,7 @@ import { Scoreboard } from '@/app/components/Scoreboard'
 import { getSeasonPostsBySlug } from '@/app/lib/api'
 
 const Page = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params
+  const { slug } = await params
   const { id, items, label } = (await getSeasonPostsBySlug(slug)) ?? {}
   // JSX
   return items.length > 0 ? (

@@ -12,14 +12,14 @@ export const metadata: Metadata = {
 
 const Home = async () => {
   // page data
-  const seasonID = '3BZXcTiV6iKpzevoOHK08n'
+  const seasonID = '5ULV8x2YBTKfWyJn7SfiS2'
   const seasonPosts = (await getSeasonPosts(seasonID)) ?? []
   // JSX
   return seasonPosts.length > 0 ? (
     <article className="article">
       <header className="header">
         <div className="container">
-          <h1 className="heading">NFL 2025 Regular Season</h1>
+          <h1 className="heading">NFL 2026 Post Season</h1>
         </div>
       </header>
       <Scoreboard seasonID={seasonID} />
@@ -31,14 +31,14 @@ const Home = async () => {
     <article className="article">
       <header className="header">
         <div className="container">
-          <h1 className="heading">NFL 2025 Regular Season</h1>
+          <h1 className="heading">NFL 2026 Post Season</h1>
         </div>
       </header>
       <div className={styles.body}>
         <div className="container">
           <p className={styles.graph}>
-            Welcome to Rich Picks. The regular season is upon us, in the
-            meantime, check out Rich’s <Link href="/nfl">NFL picks</Link>.
+            Welcome to Rich Picks. The post season is upon us, in the meantime,
+            check out Rich’s <Link href="/nfl">NFL picks</Link>.
           </p>
         </div>
       </div>
