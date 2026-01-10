@@ -26,13 +26,16 @@ const NFL = async () => {
         <div className="container">
           <ul className={styles.list}>
             <li>
-              <Link href="/nfl/2024-post-season">2024 Post Season</Link>
+              <Link href="/nfl/2025-regular-season">2025 Regular Season</Link>
+            </li>
+            <li>
+              <Link href="/nfl/2025-post-season">2025 Post Season</Link>
             </li>
             <li>
               <Link href="/nfl/2024-regular-season">2024 Regular Season</Link>
             </li>
             <li>
-              <Link href="/nfl/2023-post-season">2023 Post Season</Link>
+              <Link href="/nfl/2024-post-season">2024 Post Season</Link>
             </li>
             <li>
               <Link href="/nfl/2023-regular-season">2023 Regular Season</Link>
