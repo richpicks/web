@@ -10,7 +10,8 @@ const Scoreboard = async ({ seasonID }: { seasonID: string }) => {
   const totalPicks = filteredPicks.length
   const data = getScoreboard(filteredPicks)
   const { wins, losses, ties } = data
-  const winningPercentage = +(wins / totalPicks).toFixed(2) * 100
+  const percentage = (wins / totalPicks) * 100
+  const accuracy = Math.round(percentage * 100) / 100 // †
   // JSX
   return totalPicks > 0 ? (
     <div className={styles.scoreboard}>
@@ -20,7 +21,7 @@ const Scoreboard = async ({ seasonID }: { seasonID: string }) => {
             {wins} out of {totalPicks}
           </li>
           <li>
-            <strong>{winningPercentage.toPrecision(2)}%</strong> accuracy
+            <strong>{accuracy}%</strong> accuracy
           </li>
         </ul>
         <div className={styles.stats}>
@@ -36,3 +37,5 @@ const Scoreboard = async ({ seasonID }: { seasonID: string }) => {
 }
 
 export { Scoreboard }
+
+// † https://coreui.io/blog/how-to-round-a-number-to-two-decimal-places-in-javascript/#2-multiplication-and-division-trick
