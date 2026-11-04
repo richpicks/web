@@ -10,7 +10,8 @@ const Scoreboard = async ({ seasonID }: { seasonID: string }) => {
   const totalPicks = filteredPicks.length
   const data = getScoreboard(filteredPicks)
   const { wins, losses, ties } = data
-  const percentage = (wins / totalPicks) * 100
+  // pushes are neither a hit nor a miss
+  const percentage = (wins / (wins + losses || 1)) * 100
   const accuracy = Math.round(percentage * 100) / 100 // †
   // JSX
   return totalPicks > 0 ? (

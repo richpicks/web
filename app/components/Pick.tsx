@@ -6,6 +6,7 @@ import {
   getSpreadData,
   settleScore,
 } from '@/app/lib/utils'
+import { getPrice, getUnits } from '@/app/lib/bankroll'
 import styles from './Pick.module.scss'
 
 const PickOverUnder = ({ data }: { data: PickType }) => {
@@ -92,7 +93,7 @@ const PickMoneyline = ({ data }: { data: PickType }) => {
     result,
     moneyline,
   } = moneylineData
-  const positiveMoneyline = moneyline > 100 ? `+${moneyline}` : moneyline
+  const positiveMoneyline = moneyline > 0 ? `+${moneyline}` : moneyline
   return (
     <>
       <p className={styles.bet}>Moneyline</p>
@@ -118,14 +119,37 @@ const PickMoneyline = ({ data }: { data: PickType }) => {
   )
 }
 
+const PickStake = ({ data }: { data: PickType }) => {
+  const units = getUnits(data)
+  const price = getPrice(data, -110)
+  return (
+    <>
+      <p className={styles.stake}>
+        {units} unit{units === 1 ? '' : 's'} at{' '}
+        {price > 0 ? `+${price}` : price}
+        {data.resultOverride === 'void' && ', void (game not played)'}
+        {data.resultOverride === 'push' && ', graded as a push'}
+      </p>
+      {data.reasoning && <p className={styles.reasoning}>{data.reasoning}</p>}
+    </>
+  )
+}
+
 const Pick = ({ data }: { data: PickType }) => {
   const { bet } = data
-  return {
-    spread: <PickSpread data={data} />,
-    over: <PickOverUnder data={data} />,
-    under: <PickOverUnder data={data} />,
-    moneyline: <PickMoneyline data={data} />,
-  }[bet]
+  return (
+    <>
+      {
+        {
+          spread: <PickSpread data={data} />,
+          over: <PickOverUnder data={data} />,
+          under: <PickOverUnder data={data} />,
+          moneyline: <PickMoneyline data={data} />,
+        }[bet]
+      }
+      <PickStake data={data} />
+    </>
+  )
 }
 
 export { Pick }
