@@ -1,0 +1,42 @@
+.section {
+  padding: 3rem 1.5rem;
+}
+
+.stats {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1.5rem;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+.value {
+  display: block;
+  font-size: 1.75rem; // 28 pixels
+  font-variant-numeric: tabular-nums;
+}
+
+.name {
+  display: block;
+  font-size: 0.875rem; // 14 pixels
+}
+
+.note {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem; // 12 pixels
+  color: #52514e;
+}
+
+.graph {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-family: 'Lucida Console', Courier, monospace;
+  line-height: 1.5;
+}
+
+.graph:last-child {
+  margin-bottom: 0;
+}

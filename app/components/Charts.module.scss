@@ -1,0 +1,143 @@
+// Chart colors: blue, orange, aqua from a colorblind-checked palette
+
+.figure {
+  --surface: #ffffff;
+  --grid: #e5e4e0;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --bankroll: #2a78d6;
+  --index-fund: #eb6834;
+  --savings: #1baf7a;
+  margin: 0;
+  font-family: Verdana, Geneva, sans-serif;
+  color: var(--text-primary);
+}
+
+.heading {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  font-size: 1.25rem; // 20 pixels
+  font-weight: normal;
+}
+
+.caption {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 0.875rem; // 14 pixels
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.grid {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+
+.axis {
+  fill: var(--text-secondary);
+  font-size: 14px;
+}
+
+.label {
+  fill: var(--text-primary);
+  font-size: 14px;
+}
+
+.line {
+  fill: none;
+  stroke: var(--bankroll);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.area {
+  fill: var(--bankroll);
+  opacity: 0.1;
+}
+
+.start {
+  stroke: var(--text-secondary);
+  stroke-width: 1;
+}
+
+.dot {
+  fill: var(--bankroll);
+  stroke: var(--surface);
+  stroke-width: 2;
+}
+
+.hit {
+  fill: var(--text-primary);
+  fill-opacity: 0;
+  &:hover {
+    fill-opacity: 0.05;
+  }
+}
+
+.bankroll {
+  fill: var(--bankroll);
+  background-color: var(--bankroll);
+}
+
+.indexFund {
+  fill: var(--index-fund);
+  background-color: var(--index-fund);
+}
+
+.savings {
+  fill: var(--savings);
+  background-color: var(--savings);
+}
+
+.legend {
+  list-style-type: none;
+  margin: 0.75rem 0 0;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.875rem; // 14 pixels
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 2px;
+}
+
+.details {
+  margin-top: 1rem;
+  font-size: 0.875rem; // 14 pixels
+}
+
+.table {
+  margin-top: 0.5rem;
+  border-collapse: collapse;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+  th,
+  td {
+    padding: 0.25rem 0.5rem;
+    border-bottom: solid 1px var(--grid);
+    text-align: right;
+  }
+  th:first-child,
+  td:first-child {
+    text-align: left;
+  }
+}

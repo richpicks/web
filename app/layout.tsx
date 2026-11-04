@@ -1,6 +1,7 @@
 import 'normalize.css'
 import '@/styles/app.scss'
 import { Metadata } from 'next'
+import Link from 'next/link'
 import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import { CookieBanner } from '@/components/CookieBanner'
 import styles from './layout.module.scss'
@@ -24,8 +25,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <footer className={styles.footer}>
           <div className="container">
             <p className={styles.graph}>
-              Please <a href="https://responsibleplay.org">play responsibily</a>
-              .
+              Play money only, for entertainment and education. No real bets are
+              placed. Read our{' '}
+              <Link href="/responsible-play">rules and responsible play</Link>{' '}
+              page.
             </p>
             <p className={styles.graph}>
               If you or someone you know has a gambling problem, call{' '}

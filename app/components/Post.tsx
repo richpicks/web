@@ -48,9 +48,7 @@ const Post = ({ data }: { data: PostType }) => {
           </p>
         ) : (
           <p className={styles.graph}>
-            Odds reflect the opening lines. Please see{' '}
-            <a href="https://www.espn.com/nfl/odds">ESPN</a> for the latest
-            odds.
+            Odds are the lines when Rich made the picks. Play money only.
           </p>
         )}
       </footer>

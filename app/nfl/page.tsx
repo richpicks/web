@@ -26,6 +26,10 @@ const NFL = async () => {
         <div className="container">
           <ul className={styles.list}>
             <li>
+              <Link href="/nfl/2026-regular-season">2026 Regular Season</Link> (
+              <Link href="/nfl/2026-regular-season/record">record</Link>)
+            </li>
+            <li>
               <Link href="/nfl/2025-regular-season">2025 Regular Season</Link>
             </li>
             <li>

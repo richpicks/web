@@ -55,7 +55,7 @@ const extractSeasonPostsToo = (fetchResponse: {
           linkedFrom: {
             richPicksPostCollection: { items: any }
           }
-        }
+        },
       ]
     }
   }
@@ -73,12 +73,17 @@ const pickFields = `
   }
   title
   bet
+  units
+  price
+  resultOverride
+  reasoning
   team {
     name
     location
   }
   game {
     title
+    date
     awayTeam {
       name
       location
@@ -158,6 +163,7 @@ export const getSeasonPostsBySlug = async (slug: string) => {
                   firstPublishedAt
                 }
                 title
+                week
                 picksCollection(limit: 18) {
                   items {
                     ${pickFields}
@@ -229,4 +235,38 @@ export const getSeasonPicks = async (id: string) => {
     { id }
   )
   return extractSeasonPicks(fetchedData)
+}
+
+const extractBankroll = (fetchResponse: {
+  data: { richPicksBankrollCollection: { items: any } }
+}) => fetchResponse?.data?.richPicksBankrollCollection?.items?.[0]
+
+export const getBankrollBySeasonSlug = async (slug: string) => {
+  const entries = await fetchGraphQL(
+    `query ($slug: String!) {
+      richPicksBankrollCollection(where: { season: { slug: $slug } }, limit: 1) {
+        items {
+          title
+          startingBankroll
+          startDate
+          unitPercent
+          maxUnitsPerWeek
+          defaultPrice
+          splitRule {
+            name
+            bankrollPercent
+            indexFundPercent
+            savingsPercent
+            appliesTo
+            indexFundAnnualRate
+            savingsAnnualRate
+            explanation
+          }
+        }
+      }
+    }`,
+    false, // preview
+    { slug }
+  )
+  return extractBankroll(entries)
 }

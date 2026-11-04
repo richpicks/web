@@ -1,4 +1,5 @@
 export interface GameType {
+  date: string
   awayTeam: TeamType
   awayScore: number
   awaySpread: number
@@ -16,6 +17,10 @@ export interface PickType {
   bet: 'spread' | 'over' | 'under' | 'moneyline'
   game: GameType
   team?: TeamType
+  units?: number | null
+  price?: number | null
+  resultOverride?: 'void' | 'push' | null
+  reasoning?: string | null
   sys: {
     id: string
   }
@@ -23,6 +28,7 @@ export interface PickType {
 
 export interface PostType {
   title: string
+  week?: number | null
   picksCollection: {
     items: PickType[]
   }
@@ -41,4 +47,25 @@ export interface ScoreType {
 export interface TeamType {
   name: string
   location: string
+}
+
+export interface SplitRuleType {
+  name: string
+  bankrollPercent: number
+  indexFundPercent: number
+  savingsPercent: number
+  appliesTo: 'weekly profit' | 'each winning pick'
+  indexFundAnnualRate: number
+  savingsAnnualRate: number
+  explanation?: string | null
+}
+
+export interface BankrollType {
+  title: string
+  startingBankroll: number
+  startDate: string
+  unitPercent: number
+  maxUnitsPerWeek: number
+  defaultPrice: number
+  splitRule: SplitRuleType
 }
